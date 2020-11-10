@@ -1,23 +1,22 @@
 function getMungedGeo(geoData) {
 
-    const firstItem = geoData[0];
     return {
-        formatted_query: firstItem.display_name,
-        latitude: firstItem.lat,
-        longitude: firstItem.lon
+        formatted_query: geoData[0].display_name,
+        latitude: geoData[0].lat,
+        longitude: geoData[0].lon
     };
 }
 
 function getMungedWeather(weatherData) {
+    location.data.map(item => {
 
-    const firstItem = weatherData.data[0];
-    return {
-        forecast: firstItem.weather.description,
-        time: firstItem.ts,
-    };
-}
+        return {
+            forecast: weatherData[0].weather.description,
+            time: weatherData[0].ts,
+        };
+    }).slice(0, 8);
 
-module.exports = {
-    getMungedGeo,
-    getMungedWeather
-}; 
+    module.exports = {
+        getMungedGeo,
+        getMungedWeather
+    }; 
