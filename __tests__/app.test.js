@@ -9,28 +9,28 @@ const client = require('../lib/client');
 
 describe('app routes', () => {
   describe('routes', () => {
-    let token;
+    // let token;
 
-    beforeAll(async done => {
-      execSync('npm run setup-db');
+    // beforeAll(async done => {
+    //   execSync('npm run setup-db');
 
-      client.connect();
+    //   client.connect();
 
-      const signInData = await fakeRequest(app)
-        .post('/auth/signup')
-        .send({
-          email: 'jon@user.com',
-          password: '1234'
-        });
+    //   const signInData = await fakeRequest(app)
+    //     .post('/auth/signup')
+    //     .send({
+    //       email: 'jon@user.com',
+    //       password: '1234'
+    //     });
 
-      token = signInData.body.token;
+    //   token = signInData.body.token;
 
-      return done();
-    });
+    //   return done();
+    // });
 
-    afterAll(done => {
-      return client.end(done);
-    });
+    // afterAll(done => {
+    //   return client.end(done);
+    // });
 
     test('returns a new location data structure', async () => {
 
@@ -64,4 +64,4 @@ describe('app routes', () => {
       expect(result).toEqual(expectation);
     });
   });
-})
+});

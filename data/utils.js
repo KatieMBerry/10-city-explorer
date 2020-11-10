@@ -8,15 +8,16 @@ function getMungedGeo(geoData) {
 }
 
 function getMungedWeather(weatherData) {
-    location.data.map(item => {
+    weatherData.data.map(item => {
 
         return {
-            forecast: weatherData[0].weather.description,
-            time: weatherData[0].ts,
+            forecast: item[0].weather.description,
+            time: item[0].ts,
         };
     }).slice(0, 8);
+}
 
-    module.exports = {
-        getMungedGeo,
-        getMungedWeather
-    }; 
+module.exports = {
+    getMungedGeo,
+    getMungedWeather
+};
