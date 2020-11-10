@@ -1,4 +1,4 @@
-function getMunge(geoData) {
+function getMungedGeo(geoData) {
 
     const firstItem = geoData[0];
     return {
@@ -8,7 +8,16 @@ function getMunge(geoData) {
     };
 }
 
-module.exports = {
-    getMunge
-};
+function getMungedWeather(weatherData) {
 
+    const firstItem = weatherData.data[0];
+    return {
+        forecast: firstItem.weather.description,
+        time: firstItem.ts,
+    };
+}
+
+module.exports = {
+    getMungedGeo,
+    getMungedWeather
+}; 

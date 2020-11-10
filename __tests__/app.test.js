@@ -31,34 +31,20 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    test('returns animals', async () => {
+    test('returns a new location data structure', async () => {
 
-      const expectation = [
-        {
-          'id': 1,
-          'name': 'bessie',
-          'coolfactor': 3,
-          'owner_id': 1
-        },
-        {
-          'id': 2,
-          'name': 'jumpy',
-          'coolfactor': 4,
-          'owner_id': 1
-        },
-        {
-          'id': 3,
-          'name': 'spot',
-          'coolfactor': 10,
-          'owner_id': 1
-        }
-      ];
+      const expectation = {
+        formatted_query: firstItem.display_name,
+        latitude: firstItem.lat,
+        longitude: firstItem.lon
+      };
 
       const data = await fakeRequest(app)
-        .get('/animals')
+        .get('/location')
         .expect('Content-Type', /json/)
         .expect(200);
 
       expect(data.body).toEqual(expectation);
     });
   });
+})
