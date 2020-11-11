@@ -8,7 +8,7 @@ function getMungedGeo(geoData) {
 }
 
 function getMungedWeather(weatherData) {
-    weatherData.data.map(item => {
+    return weatherData.data.map(item => {
 
         return {
             forecast: item.weather.description,
