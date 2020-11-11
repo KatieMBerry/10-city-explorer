@@ -11,8 +11,8 @@ function getMungedWeather(weatherData) {
     weatherData.data.map(item => {
 
         return {
-            forecast: item[0].weather.description,
-            time: item[0].ts,
+            forecast: item.weather.description,
+            time: item.datetime,
         };
     }).slice(0, 8);
 }
